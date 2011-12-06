@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="dist" name="trilead-ssh2">
+	<target name="init">
+		<property name="build.dir" value="build"/>
+		<property name="src.dir" value="src"/>
+	</target>
+	<target name="compile" depends="init">
+		<mkdir dir="${build.dir}"/>
+		<javac
+			debug="false"
+			deprecation="true"
+			destdir="${build.dir}"
+			srcdir="${src.dir}"
+			target="1.4"
+			source="1.4">
+		</javac>
+	</target>
+	<target name="clean" depends="init">
+		<delete includeEmptyDirs="true" dir="${build.dir}"/>
+	</target>
+	<target name="dist" depends="compile">
+		<jar jarFile="trilead-ssh2.jar" baseDir="${build.dir}" index="true"/>
+	</target>
+</project>
